@@ -11,6 +11,7 @@ define ['backbone'], (Backbone) ->
 		printRegex: -> 
 			@$('.alert').text('')
 			try
-				console.log @getRegex()
+				console.log regex = @getRegex()
+				Backbone.trigger 'regex:test', regex
 			catch err
 				@$('.alert').show().text(err.message)

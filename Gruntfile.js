@@ -170,8 +170,6 @@ module.exports = function (grunt) {
                 },
                 options: {
                     amd: true,
-                    partialRegex: /.*/,
-                    partialsPathRegex: /partials\//,
                     processName: function(filename) {
                         // funky name processing here
                         return filename

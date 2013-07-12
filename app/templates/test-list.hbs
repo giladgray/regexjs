@@ -1,0 +1,13 @@
+<form id="new-test" class="pure-form pure-form-stacked">
+	<label for="test-string">Create a New Test</label>
+	<input type="text" id="test-string">
+	<button class="pure-button">Test</button>
+</form>
+
+<ul class="tests">
+	{{#each tests}}
+		{{#with attributes}}
+			{{> test}}
+		{{/with}}
+	{{/each}}
+</ul>
