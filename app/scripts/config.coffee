@@ -6,7 +6,7 @@ require.config
   paths:
     # Libraries
     backbone: '../bower_components/backbone-amd/backbone'
-    bootstrap: '../scripts/vendor/bootstrap'
+    bootstrap: '../scripts/lib/bootstrap'
     handlebars: '../bower_components/handlebars/handlebars.runtime'
     jquery: '../bower_components/jquery/jquery'
     layoutmanager: '../bower_components/layoutmanager-amd/backbone.layoutmanager'
