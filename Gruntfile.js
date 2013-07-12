@@ -22,12 +22,18 @@ module.exports = function (grunt) {
         dist: 'dist'
     };
 
+    grunt.loadNpmTasks('grunt-contrib-handlebars');
+
     grunt.initConfig({
         yeoman: yeomanConfig,
         watch: {
             options: {
                 nospawn: true,
                 livereload: true
+            },
+            coffee: {
+                files: ['<%= yeoman.app %>/scripts/**/*.coffee'],
+                tasks: ['coffee:dist']
             },
             coffeeTest: {
                 files: ['test/spec/{,*/}*.coffee'],
@@ -37,6 +43,10 @@ module.exports = function (grunt) {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass']
             },
+            handlebars: {
+                files: ['<%= yeoman.app %>/templates/**/*.hbs'],
+                tasks: ['handlebars']
+            },
             livereload: {
                 options: {
                     livereload: LIVERELOAD_PORT
@@ -44,15 +54,9 @@ module.exports = function (grunt) {
                 files: [
                     '<%= yeoman.app %>/*.html',
                     '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
-                    '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+                    '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.{js,coffee}',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}'
                 ]
-            },
-            jst: {
-                files: [
-                    '<%= yeoman.app %>/scripts/templates/*.ejs'
-                ],
-                tasks: ['jst']
             }
         },
         connect: {
@@ -156,6 +160,24 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     debugInfo: true
+                }
+            }
+        },
+        handlebars: {
+            compile: {
+                files: {
+                    ".tmp/scripts/templates.js": ["<%= yeoman.app %>/templates/**/*.hbs"]
+                },
+                options: {
+                    amd: true,
+                    partialRegex: /.*/,
+                    partialsPathRegex: /partials\//,
+                    processName: function(filename) {
+                        // funky name processing here
+                        return filename
+                                .replace(/^app\/templates\//, '')
+                                .replace(/\.hbs$/, '');
+                    }
                 }
             }
         },
@@ -292,7 +314,7 @@ module.exports = function (grunt) {
             'clean:server',
             'coffee:dist',
             'createDefaultTemplate',
-            'jst',
+            'handlebars',
             'compass:server',
             'connect:livereload',
             'open',
@@ -304,7 +326,7 @@ module.exports = function (grunt) {
         'clean:server',
         'coffee',
         'createDefaultTemplate',
-        'jst',
+        'handlebars',
         'compass',
         'connect:test',
         'mocha'
@@ -314,7 +336,7 @@ module.exports = function (grunt) {
         'clean:dist',
         'coffee',
         'createDefaultTemplate',
-        'jst',
+        'handlebars',
         'compass:dist',
         'useminPrepare',
         'requirejs',
