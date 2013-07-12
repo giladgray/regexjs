@@ -4,8 +4,68 @@ body {
     background: #fafafa;
 }
 
+.container {
+	width: 970px;
+	margin: auto;
+}
+
 .hero-unit {
     margin: 50px auto 0 auto;
     width: 300px;
     background: orange
+}
+
+.table-row {
+	display: table;
+
+	& > * {
+		display: table-cell;
+		vertical-align: top;
+		padding-right: 10px;
+
+		&:last-child, &.full {
+			padding-right: 0;
+		}
+	}
+
+	.fixed { width: 0; } 
+	.variable { width: 100%; }
+}
+
+#editor {
+	font-size: 20px;
+
+	textarea, input {
+		font-family: monospace;
+		width: 100%;
+	}
+	#options {
+		width: 100px;
+	}
+
+	.expression {
+		font-size: 1.5em;
+		padding: 0 25px;
+		box-sizing: border-box;
+		position: relative;
+
+		&:before, &:after {
+			content: '/';
+			position: absolute;
+		}
+		&:before {
+			top: 0;
+			left: 10px;
+			text-align: right;
+		}
+
+		&:after {
+			right: 5px;
+			bottom: 0;
+			text-align: left;
+		}
+	}
+	.modifiers {
+		vertical-align: bottom;
+	}
 }
