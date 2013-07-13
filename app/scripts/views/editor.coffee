@@ -5,8 +5,11 @@ define ['backbone'], (Backbone) ->
 		events:
 			'blur textarea': 'printRegex'
 			'blur input': 'printRegex'
+			'change input': 'printRegex'
 
-		getRegex: -> new RegExp(@$('#regex').val(), @$('#otpions').val())
+		getOption: (id) -> if @$('#' + id).is(':checked') then id else ''
+
+		getRegex: -> new RegExp(@$('#regex').val(), @getOption('g') + @getOption('m') + @getOption('i'))
 
 		printRegex: -> 
 			@$('.alert').text('')

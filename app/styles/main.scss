@@ -49,6 +49,38 @@ body {
 	}
 }
 
+.pure-form {
+	input[type=text], button { 
+		font-size: 1em; 
+		font-family: 'Source Code Pro', monospace;
+	}
+}
+
+.pure-button-success,
+.pure-button-error,
+.pure-button-warning,
+.pure-button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.pure-button-success {
+    background: $green;
+}
+
+.pure-button-error {
+    background: $maroon;
+}
+
+.pure-button-warning {
+    background: $orange;
+}
+
+.pure-button-secondary {
+    background: $ltblue;
+}
+
 ul.unstyled {
 	margin: 0;
 	padding: 0;
@@ -81,10 +113,14 @@ ul.inline {
 
 #editor {
 	font-size: 20px;
+	padding: 15px;
+	background: orange;
+	border: 1px solid darken(orange, 15%);
 
-	textarea, input {
+	textarea, input[type=text] {
 		font-family: 'Source Code Pro', monospace;
 		width: 100%;
+		font-size: 1em;
 	}
 	#options {
 		width: 100px;
@@ -92,28 +128,44 @@ ul.inline {
 
 	.expression {
 		font-size: 1.5em;
-		padding: 0 25px;
 		box-sizing: border-box;
 		position: relative;
+		vertical-align: middle;
 
+		#regex {
+			padding: 10px 30px;
+			box-sizing: border-box;
+		}
+
+		$slashSize: 40px;
 		&:before, &:after {
 			content: '/';
 			position: absolute;
+			top: 50%;
+			font-size: $slashSize;
+			line-height: $slashSize;
+			margin-top: -$slashSize / 2 - 3px;
 		}
 		&:before {
-			top: 0;
 			left: 10px;
-			text-align: right;
 		}
 
 		&:after {
-			right: 5px;
-			bottom: 0;
-			text-align: left;
+			right: 15px;
 		}
 	}
 	.modifiers {
-		vertical-align: bottom;
+		vertical-align: middle;
+		font-size: 0.7em;
+
+		label {
+			width: 120px;
+			display: block;
+			color: black;
+		}
+	}
+}
+
 #tests {
 	form {
 		padding: 15px;

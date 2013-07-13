@@ -1,9 +1,20 @@
-<div class="regex table-row">
+<div class="regex table-row pure-form">
 	<div class="expression variable">
-		<input name="regex" id="regex" rows="3" autofocus></textarea>
+		<input type="text" name="regex" id="regex" rows="3" autofocus placeholder="r[aeiou]g[aeiou]x{3}"></textarea>
 	</div>
 	<div class="modifiers fixed">
-		<input type="text" name="options" id="options"/>
+		<label for="g" class="pure-checkbox">
+			<input type="checkbox" name="global" id="g">
+			<strong>g</strong>lobal
+		</label>
+		<label for="i" class="pure-checkbox">
+			<input type="checkbox" name="multiline" id="m">
+			<strong>m</strong>ultiline
+		</label>
+		<label for="i" class="pure-checkbox">
+			<input type="checkbox" name="ignore" id="i">
+			<strong>i</strong>gnore case
+		</label>
 	</div>
 </div>
 <div class="alert alert-error hide" id="error"></div>
