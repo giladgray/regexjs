@@ -25,10 +25,11 @@ define ['backbone', 'models/expression'], (Backbone, Expression) ->
 			console.log "running #{@tests.size()} tests..."
 			# compare each test string to the regex and record the result
 			@tests.each (item) ->
-				if result = regex.test item.get('string')
+				if result = regex.exec item.get('string')
 					item.set('status', 'success')
 				else
 					item.set('status', 'error')
+				item.set('match', result)
 				console.log regex, item.get('string'), result
 			# re-render this view to update the statuses
 			@render()

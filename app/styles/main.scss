@@ -114,12 +114,48 @@ ul.inline {
 	}
 	.modifiers {
 		vertical-align: bottom;
+#tests {
+	form {
+		padding: 15px;
+		border-bottom: 1px solid black;
+		text-align: center;
+		font-size: 1.5em;
+	}
+
+	.test {
+		position: relative;
+		padding: 1.5em;
+		border-top: 1px solid white;
+		border-bottom: 1px solid gray;
+
+		.status {
+			width: 1em;
+			height: 1em;
+			background: rgba(0,0,0,0.2);
+			display: inline-block;
+		}
+
+		.matches {
+			ol {
+				margin-left: 5em;
+				margin-bottom: 0;
+				padding-left: 3em;
+				border-left: 1px solid rgba(0,0,0,0.5);
+			}
+		}
+
+		.actions {
+			position: absolute;
+			right: 15px;
+			top: 1em;
+			// margin-top: -1em;
+		}
 	}
 }
 
 .success {
-	background: green;
+	background: lighten($green, 30%);
 }
 .error {
-	background: red;
+	background: lighten($maroon, 30%);
 }
