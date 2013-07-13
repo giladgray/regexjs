@@ -1,5 +1,5 @@
 # all the top-level dependencies go here. simply requiring 'app' will give you all these libraries.
-define ['underscore', 'jquery', 'backbone', 'layoutmanager'], (_, $, Backbone) ->
+define ['underscore', 'jquery', 'backbone', 'layoutmanager', 'bootstrap'], (_, $, Backbone) ->
   "use strict"
 
   # Localize or create a new JavaScript Template object.

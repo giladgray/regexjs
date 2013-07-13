@@ -1,0 +1,131 @@
+@import "colors";
+
+.modal-backdrop {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	background: rgba(0, 0, 0, 0.7);
+}
+
+$modalWidth: 750px;
+$modalHeight: 700px;
+$modalHeaderHeight: 70px;
+$modalFooterHeight: 40px;
+$modalPadding: 20px;
+
+.modal {
+	width: $modalWidth;
+	height: $modalHeight;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 1050;
+	
+	margin-top: -$modalHeight / 2;
+	margin-left: -$modalWidth / 2;
+
+	background: white;
+	border-radius: 6px;
+	border: 1px solid $orange;
+	box-sizing: border-box;
+
+	.modal-header {
+		background: $orange;
+		height: $modalHeaderHeight;
+		text-align: center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+
+		h1, h2, h3 {
+			line-height: 1em;
+			color: white;
+		}
+	}
+
+	.modal-body {
+		box-sizing: border-box;
+		padding: $modalPadding;
+		margin-top: $modalHeaderHeight;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		max-height: $modalHeight - $modalHeaderHeight - $modalFooterHeight;
+
+		.pure-u-1-2 {
+			box-sizing: border-box;
+			float: left;
+
+			&:nth-of-type(2n) {
+				padding-left: $modalPadding / 2;
+			}
+			&:nth-of-type(2n+1) {
+				padding-right: $modalPadding / 2;
+			}
+		}
+	}
+
+	.modal-footer {
+		height: $modalFooterHeight;
+		padding: .25em $modalPadding;
+		background: $orange;
+		color: white;
+		text-align: center;
+		border-radius: 0 0 6px 6px
+	}
+}
+
+// the Regex Cheat Sheet modal from the Learn menu item
+.modal-help {
+	label {
+		display: inline-block;
+		font-size: 1.2em;
+		font-weight: 600;
+		margin: .5em 0 .2em;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	table {
+		width: 100%;
+
+		.item, .ex {
+			text-align: right;
+			white-space: nowrap;
+		
+		}
+
+		.item {
+			color: $orange;
+			font-weight: 600;
+
+			// placeholder symbols
+			em, i {
+				width: 1.4em;
+				height: 1em;
+				background: silver;
+				display: inline-block;
+				vertical-align: bottom;
+			}
+			i {
+				width: .6em;
+			}
+		}
+		.desc {
+		}
+		.ex {
+			font-size: .8em;
+		}
+	}
+	#captures + table .item { min-width: 90px; }
+
+	ul {
+		display: inline-block;
+	}
+}

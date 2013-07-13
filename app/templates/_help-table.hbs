@@ -1,0 +1,13 @@
+<table class="{{#pure 'table' 'horizontal' 'striped'}}{{/pure}}">
+	{{#each this}} 
+	<tr>
+		<td class="item">{{{rule}}}</td>
+		{{#if example}}
+		<td class="desc">{{{description}}}</td>
+		<td class="ex">{{{example}}}</td>
+		{{else}}
+		<td class="desc" colspan="2">{{{description}}}</td>
+		{{/if}} 
+	</tr>
+	{{/each}}
+</table>

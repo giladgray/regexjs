@@ -1,9 +1,18 @@
 @import "http://yui.yahooapis.com/pure/0.2.0/pure-min.css";
-@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,700);
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600,700);
+
+@import "colors";
+@import "modal";
 
 body {
 	font-family: 'Source Code Pro', monospace;
     background: #fafafa;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .container {
@@ -15,6 +24,42 @@ body {
     margin: 50px auto 0 auto;
     width: 300px;
     background: orange
+}
+
+.pull-left  { float: left; }
+.pull-right { float: right; }
+
+.pure-menu {
+	padding: 1em 0;
+
+	.pure-menu-heading {
+		font-size: 2em;
+		font-weight: bold;
+	}
+
+	.pure-menu-subheading {
+		width: 22em;
+		font-size: 0.8em;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	ul {
+		text-transform: uppercase;
+	}
+}
+
+ul.unstyled {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+ul.inline {
+	@extend ul.unstyled;
+	li {
+		display: inline-block;
+		padding: 5px 10px;
+	}
 }
 
 .table-row {
