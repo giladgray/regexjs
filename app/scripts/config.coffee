@@ -17,5 +17,7 @@ require.config
   shim:
     handlebars:
       exports: 'Handlebars'
+      init: ->
+        @Handlebars = Handlebars
     parse:
       exports: 'Parse'

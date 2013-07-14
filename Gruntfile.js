@@ -23,6 +23,7 @@ module.exports = function (grunt) {
     };
 
     grunt.loadNpmTasks('grunt-contrib-handlebars');
+    grunt.loadNpmTasks('grunt-bower-requirejs');
 
     grunt.initConfig({
         yeoman: yeomanConfig,
@@ -184,10 +185,13 @@ module.exports = function (grunt) {
                 // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
                 options: {
                     // `name` and `out` is set by grunt-usemin
-                    baseUrl: '<%= yeoman.app %>/scripts',
+                    // because of coffee-script, we'll have requirejs compile from .tmp folder
+                    baseUrl: '.tmp/scripts',
                     optimize: 'none',
+                    // paths for our own files (not bower_components)
                     paths: {
-                        'templates': '../../.tmp/scripts/templates'
+                        templates: '../../.tmp/scripts/templates',
+                        bootstrap: '../../.tmp/scripts/lib/bootstrap'
                     },
                     // TODO: Figure out how to make sourcemaps work with grunt-usemin
                     // https://github.com/yeoman/grunt-usemin/issues/30
@@ -268,11 +272,23 @@ module.exports = function (grunt) {
                         'images/{,*/}*.{webp,gif}'
                     ]
                 }]
+            },
+            // copy scripts/lib folder to .tmp for requirejs
+            lib: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= yeoman.app %>', 
+                    dest: '.tmp', 
+                    src: [
+                        'scripts/lib/*.*'
+                    ]
+                }]
             }
         },
         bower: {
             all: {
-                rjsConfig: '<%= yeoman.app %>/scripts/main.js'
+                rjsConfig: '.tmp/scripts/config.js'
             }
         },
         jst: {
@@ -296,7 +312,15 @@ module.exports = function (grunt) {
                     ]
                 }
             }
-        }
+        },
+        // symlink bower_components folder into .tmp for requirejs
+        symlink: {
+            js: {
+                dest: '.tmp/bower_components',
+                relativeSrc: '../<%= yeoman.app %>/bower_components',
+                options: {type: 'dir'}
+            }
+        },
     });
 
     grunt.registerTask('createDefaultTemplate', function () {
@@ -336,6 +360,8 @@ module.exports = function (grunt) {
         'createDefaultTemplate',
         'handlebars',
         'compass:dist',
+        'copy:lib',
+        'symlink',
         'useminPrepare',
         'requirejs',
         'imagemin',
