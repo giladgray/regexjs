@@ -6,20 +6,26 @@ define ['backbone', 'models/expression'], (Backbone, Expression) ->
 			'submit form': 'addTest'
 
 		initialize: ->
-			# create a list of expressions to store tests, re-render on change
+			# create a list of expressions to store tests
 			@tests = new Expression.List()
-			@tests.on 'all', @render, @
 			# subscribe to regex:test event (triggered by editor)
 			Backbone.on 'regex:test', @performTests, @
 
 		serialize: -> 
 			tests: @tests.models
+			# calculate some stats about the tests
+			stats:
+				total: @tests.models.length
+				status: @tests.countBy (item) -> item.get 'status'
 
 		addTest: (e) ->
 			e.preventDefault()
 			# add a new test to the collection
-			@tests.add
-				string: @$('#test-string').val()
+			if testString = @$('#test-string').val()
+				@tests.add
+					string: testString
+			# instruct editor to send us the regex so we can test
+			Backbone.trigger 'regex:get'
 
 		performTests: (regex) ->
 			console.log "running #{@tests.size()} tests..."

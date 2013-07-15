@@ -24,7 +24,7 @@ $modalWidth: 750px;
 $modalHeight: 700px;
 $modalHeaderHeight: 70px;
 $modalFooterHeight: 40px;
-$modalPadding: 20px;
+$modalPadding: 1.5em;
 
 .modal {
 	width: $modalWidth;
@@ -62,21 +62,7 @@ $modalPadding: 20px;
 		box-sizing: border-box;
 		padding: $modalPadding;
 		margin-top: $modalHeaderHeight;
-		overflow-x: hidden;
-		overflow-y: hidden;
 		max-height: $modalHeight - $modalHeaderHeight - $modalFooterHeight;
-
-		.pure-u-1-2 {
-			box-sizing: border-box;
-			float: left;
-
-			&:nth-of-type(2n) {
-				padding-left: $modalPadding / 2;
-			}
-			&:nth-of-type(2n+1) {
-				padding-right: $modalPadding / 2;
-			}
-		}
 	}
 
 	.modal-footer {

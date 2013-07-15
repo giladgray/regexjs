@@ -3,6 +3,8 @@
 
 @import "../bower_components/bootstrap-sass/lib/_mixins";
 
+$fixedCellWidth: 120px;
+
 @import "colors";
 @import "modal";
 
@@ -35,6 +37,22 @@ body {
 .middle { display: block; margin: auto; }
 .center { text-align: center; }
 
+.pure-u-1 {
+	overflow: hidden;
+}
+
+.pure-u-1-2 {
+	box-sizing: border-box;
+	float: left;
+
+	&:nth-of-type(2n) {
+		padding-left: $modalPadding / 2;
+	}
+	&:nth-of-type(2n+1) {
+		padding-right: $modalPadding / 2;
+	}
+}
+
 .pure-menu {
 	padding: 1em 0;
 
@@ -58,9 +76,14 @@ body {
 }
 
 .pure-form {
-	input[type=text], button { 
-		font-size: 1em; 
+	textarea, input[type=text], button {
+		font-size: 1em;
 		font-family: 'Source Code Pro', monospace;
+		width: 100%;
+	}
+
+	.pure-input-3-4 {
+		width: 72%;
 	}
 }
 
@@ -107,7 +130,7 @@ ul.inline {
 
 	& > * {
 		display: table-cell;
-		vertical-align: top;
+		vertical-align: middle;
 		padding-right: 10px;
 
 		&:last-child, &.full {
@@ -119,26 +142,32 @@ ul.inline {
 	.variable { width: 100%; }
 }
 
-#editor {
+#editor, #tests {	
 	font-size: 20px;
-	padding: 15px;
+
+	.variable {
+		box-sizing: border-box;
+	}
+
+	.fixed {
+		font-size: 0.7em;
+		padding-left: 5px;
+		
+		& > * {
+			width: 120px;
+		}
+	}
+}
+
+#editor {
 	background: $orange;
 	border: 1px solid $orangeDark;
-
-	textarea, input[type=text] {
-		font-family: 'Source Code Pro', monospace;
-		width: 100%;
-		font-size: 1em;
-	}
-	#options {
-		width: 100px;
-	}
+	padding: 1em;
 
 	.expression {
 		font-size: 1.5em;
 		box-sizing: border-box;
 		position: relative;
-		vertical-align: middle;
 
 		#regex {
 			padding: 10px 30px;
@@ -163,23 +192,26 @@ ul.inline {
 		}
 	}
 	.modifiers {
-		vertical-align: middle;
-		font-size: 0.7em;
-
 		label {
-			width: 120px;
-			display: block;
 			color: black;
 		}
 	}
 }
 
 #tests {
-	form {
-		padding: 15px;
+	header {
 		border-bottom: 1px solid black;
-		text-align: center;
-		font-size: 1.5em;
+		padding: 1em;
+		
+		form {
+			overflow: hidden;
+			> * {
+				float: left;
+				&:last-child {
+					padding-left: 1em;
+				}
+			}
+		}
 	}
 
 	.test {
