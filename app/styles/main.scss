@@ -23,13 +23,17 @@ body {
 }
 
 .hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    background: orange
+    margin: 0 auto;
+    padding: 20px;
+    background: $orange;
+    border: 1px solid $orangeDark;
 }
 
 .pull-left  { float: left; }
 .pull-right { float: right; }
+
+.middle { display: block; margin: auto; }
+.center { text-align: center; }
 
 .pure-menu {
 	padding: 1em 0;
@@ -116,8 +120,8 @@ ul.inline {
 #editor {
 	font-size: 20px;
 	padding: 15px;
-	background: orange;
-	border: 1px solid darken(orange, 15%);
+	background: $orange;
+	border: 1px solid $orangeDark;
 
 	textarea, input[type=text] {
 		font-family: 'Source Code Pro', monospace;

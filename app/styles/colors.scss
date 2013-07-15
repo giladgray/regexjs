@@ -1,5 +1,13 @@
+$darkenPct: 15%;
 
 $green: rgb(28, 184, 65);
+$greenDark: darken($green, $darkenPct);
+
 $ltblue: rgb(66, 184, 221);
+$ltblueDark: darken($ltblue, $darkenPct);
+
 $maroon: rgb(202, 60, 60);
-$orange: rgb(223, 117, 20);
+$maroonDark: darken($maroon, $darkenPct);
+
+$orange: orange; // rgb(223, 117, 20);
+$orangeDark: darken($orange, $darkenPct);
