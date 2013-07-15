@@ -1,3 +1,4 @@
+@import "../bower_components/bootstrap-sass/lib/_mixins";
 @import "colors";
 
 .modal-backdrop {
@@ -7,7 +8,16 @@
 	left: 0;
 	right: 0;
 	z-index: 1000;
-	background: rgba(0, 0, 0, 0.7);
+	background-color: black;
+
+	&.fade { 
+		@include transition(opacity .3s linear);
+		opacity: 0; 
+	}
+}
+.modal-backdrop,
+.modal-backdrop.fade.in {
+	@include opacity(80);
 }
 
 $modalWidth: 750px;
@@ -77,6 +87,14 @@ $modalPadding: 20px;
 		text-align: center;
 		border-radius: 0 0 6px 6px
 	}
+
+	// animations
+	
+	&.fade {
+		@include transition(opacity .3s linear, top .3s ease-out);
+		top: -50%;
+	}
+	&.fade.in { top: 50%; }
 }
 
 // the Regex Cheat Sheet modal from the Learn menu item

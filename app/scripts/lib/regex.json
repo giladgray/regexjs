@@ -11,16 +11,16 @@
 			"description": "alphanumeric"
 		},
 		{
-			"rule": "\\nn",
-			"description": "punctuation"
-		},
-		{
-			"rule": "\\u0000..\\uFFFF",
+			"rule": "\\u0000-\\uFFFF",
 			"description": "unicode hex"
 		},
 		{
-			"rule": "\\x00..\\xFF",
-			"description": "ADCII hex"
+			"rule": "\\x00-\\xFF",
+			"description": "ASCII hex"
+		},
+		{
+			"rule": "\\nn",
+			"description": "punctuation"
 		},
 		{
 			"rule": "\\t",
@@ -54,7 +54,7 @@
 		{
 			"rule": "nn-nn",
 			"description": "range",
-			"example": "0-9"
+			"example": "\\x11-\\xDD"
 		},
 		{
 			"rule": "\\d",
@@ -92,7 +92,7 @@
 		},
 		{
 			"rule": "xx*",
-			"description": "any (or or more)"
+			"description": "any (0 or more)"
 		},
 		{
 			"rule": "xx+",
@@ -121,7 +121,7 @@
 		},
 		{
 			"rule": "(?:xx)",
-			"description": "only groups characters"
+			"description": "non-capturing group"
 		}
 	]
 }

@@ -3,7 +3,10 @@ define ['backbone', 'text!lib/regex.json'], (Backbone, regexes) ->
 	class HelpView extends Backbone.View
 		template: 'help'
 
-		className: 'modal modal-help'
+		className: 'modal modal-help fade'
+
+		defaults:
+			remove: true
 
 		initialize: ->
 			@regexes = {}
@@ -20,11 +23,14 @@ define ['backbone', 'text!lib/regex.json'], (Backbone, regexes) ->
 		# Returns a promise that resolves when modal is closed. 
 		# The promise is never rejected but it's safer to use always() instead of done()
 		modal: (options) ->
+			options = _.extend @defaults, options
 			# if we don't have a reference to it then the modal hasn't been rendered
 			@render() unless @_modal	
 
 			@_modal = @$el.modal(options)	
 			deferred = new $.Deferred()
 			# resolve the promise on modal hide
-			@_modal.on 'hide', -> deferred.resolve()
+			@_modal.on 'hidden', => 
+				deferred.resolve()
+				@remove() if options.remove
 			return deferred

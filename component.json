@@ -11,5 +11,7 @@
     "handlebars": "~1.0.0",
     "layoutmanager-amd": "latest"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "bootstrap-sass": "~2.3.2"
+  }
 }
