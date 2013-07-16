@@ -261,6 +261,17 @@ ul.inline {
 	}
 }
 
+#sheet {
+	.modal {
+		position: relative;
+		top: 0;
+		left: 0;
+		margin: 30px auto;
+
+		#popout { display: none; }
+	}
+}
+
 .success {
 	background: lighten($green, 30%);
 }

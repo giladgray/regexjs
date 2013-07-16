@@ -8,6 +8,9 @@ define ['backbone', 'text!lib/regex.json'], (Backbone, regexes) ->
 		defaults:
 			remove: true
 
+		events:
+			'click #popout': 'popout'
+
 		initialize: ->
 			@regexes = {}
 			# fancy up the rules with some HTML substitution
@@ -18,6 +21,9 @@ define ['backbone', 'text!lib/regex.json'], (Backbone, regexes) ->
 					example: rule.example or ''
 
 		serialize: -> @regexes
+
+		popout: ->
+			@_modal?.modal('hide')
 
 		# Launches this ModalView as a Bootstrap modal dialog using the jQuery plugin.
 		# Returns a promise that resolves when modal is closed. 
