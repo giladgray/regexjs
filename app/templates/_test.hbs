@@ -1,7 +1,8 @@
 <li class="test {{status}}">
 	{{> actions}}
 	<div class="status"></div>
-	{{string}}
+	<div class="text">{{string}}</div>
+	<input type="text" class="edit" value="{{string}}">
 	{{#unless string}}&nbsp;{{/unless}}
 	{{#if match}}
 		<div class="matches">
