@@ -1,6 +1,7 @@
 define ['backbone'], (Backbone) ->
 	class EditorView extends Backbone.View
 		template: 'editor'
+		className: 'container'
 
 		events:
 			'blur textarea': 'printRegex'

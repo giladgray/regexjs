@@ -1,6 +1,7 @@
 define ['backbone', 'views/help'], (Backbone, HelpView) ->
 	class NavbarView extends Backbone.View
 		template: 'navbar'
+		className: 'container'
 
 		events:
 			'click #learn': 'showHelp'
