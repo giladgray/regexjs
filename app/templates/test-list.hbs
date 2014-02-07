@@ -20,17 +20,5 @@
 	</div>
 </header>
 
-<ul class="tests unstyled pure-u-1-2 success">
-	{{#each tests.success}}
-		{{#with attributes}}
-			{{> test}}
-		{{/with}}
-	{{/each}}
-</ul>
-<ul class="tests unstyled pure-u-1-2 error">
-	{{#each tests.error}}
-		{{#with attributes}}
-			{{> test}}
-		{{/with}}
-	{{/each}}
-</ul>
+
+<ul id="test-list" class="tests unstyled"></ul>

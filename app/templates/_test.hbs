@@ -1,16 +1,16 @@
 <li class="test {{status}}">
 	{{> actions}}
 	<div class="status"></div>
-	<div class="text">{{string}}</div>
+	<div class="text">{{{stringFormat}}}</div>
 	<input type="text" class="edit" value="{{string}}">
 	{{#unless string}}&nbsp;{{/unless}}
 	{{#if match}}
 		<div class="matches">
 			<strong class="pull-left">Matches</strong>
-			<ol>
-			{{#each match}}
-				<li>{{this}}</li>
-			{{/each}}
+			<ol class="inline">
+			{{#rest match}}
+				<li>{{@index}}. {{this}}</li>
+			{{/rest}}
 			</ol>
 		</div>
 	{{/if}}

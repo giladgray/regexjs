@@ -89,7 +89,7 @@ body {
 }
 
 .pure-form {
-	textarea, input[type=text], button {
+	textarea, input[type='text'], button {
 		font-size: 1em;
 		font-family: 'Source Code Pro', monospace;
 		width: 100%;
@@ -125,16 +125,15 @@ body {
     background: $ltblue;
 }
 
-ul.unstyled {
+ul.unstyled, ol.unstyled {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
 }
-ul.inline {
-	@extend ul.unstyled;
+ul.inline, ol.inline {
 	li {
 		display: inline-block;
-		padding: 5px 10px;
+		padding: 0px 10px;
 	}
 }
 
@@ -267,12 +266,16 @@ ul.inline {
 
 	.test {
 		position: relative;
-		padding: 1.5em;
-		border-top: 1px solid rgba(255,255,255,0.7);
-		border-bottom: 1px solid rgba(0,0,0,0.7);
+		padding: 1em;
+        padding-left: 2em;
+        border-top: 1px solid rgba(255,255,255,0.7);
+        border-bottom: 1px solid rgba(0,0,0,0.7);
 
+        .text { padding: 3px 0; }
 		.edit {
+            width: 100%;
 			display: none;
+            font-family: 'Source Code Pro', monospace;
 		}
 		&.editing {
 			.edit { display: inline-block; }
@@ -280,17 +283,23 @@ ul.inline {
 		}
 
 		.status {
-			width: 1em;
-			height: 1em;
+            position: absolute;
+            top: 1.2em;
+            left: .5em;
+            width: 1em;
+            height: 1em;
 			background: rgba(0,0,0,0.2);
 			display: inline-block;
 		}
 
+
+        &.success .status { background: lighten($green, 30%); }
+        &.error   .status { background: lighten($maroon, 30%); }
+
 		.matches {
 			ol {
-				margin-left: 5em;
-				margin-bottom: 0;
-				padding-left: 3em;
+                margin: .5em 0 0 5em;
+				padding-left: .3em;
 				border-left: 1px solid rgba(0,0,0,0.5);
 			}
 		}
@@ -299,7 +308,6 @@ ul.inline {
 			position: absolute;
 			right: 15px;
 			top: 1em;
-			// margin-top: -1em;
 		}
 	}
 }
@@ -315,9 +323,3 @@ ul.inline {
 	}
 }
 
-.success {
-	background: lighten($green, 30%);
-}
-.error {
-	background: lighten($maroon, 30%);
-}
