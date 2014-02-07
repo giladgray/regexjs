@@ -1,48 +1,57 @@
-define ['backbone', 'models/expression', 'views/test'], (Backbone, Expression, TestView) ->
-	class TesterView extends Backbone.View
-		template: 'test-list'
-		className: 'container'
+Backbone   = require 'backbone'
+Expression = require '../models/expression'
+TestView   = require './test'
 
-		events:
-			'click .text': 'edit'
-			'submit form': 'addTest'
+class TesterView extends Backbone.View
+	template: 'test-list'
+	className: 'container'
 
-		initialize: ->
-			# create a list of expressions to store tests
-			@testList = new Expression.List()
-			# subscribe to regex:test event (triggered by editor)
-			Backbone.on 'regex:test', @performTests, @
+	events:
+		# 'click .text': 'edit'
+		'submit form': 'addTest'
 
-		serialize: -> 
-			tests: @testList.groupBy (item) -> item.get('status')
-			# calculate some stats about the tests
-			stats:
-				total: @testList.models.length
-				status: @testList.countBy (item) -> item.get 'status'
+	initialize: ->
+		# create a list of expressions to store tests
+		@testList = new Expression.List()
+		# subscribe to regex:test event (triggered by editor)
+		Backbone.on 'regex:test', @performTests, @
+		@testList.on 'all', @render, @
 
-		beforeRender: ->
-			# list = @$('ul')
-			@testList.each (test) =>
-				@insertView 'ul', new TestView(model: test)
+	serialize: ->
+		tests: @testList.models
+		# calculate some stats about the tests
+		stats:
+			total: @testList.models.length
+			status: @testList.countBy (item) -> item.get 'status'
 
-		addTest: (e) ->
-			e.preventDefault()
-			# add a new test to the collection
-			if testString = @$('#test-string').val()
-				@testList.add
-					string: testString
-			# instruct editor to send us the regex so we can test
-			Backbone.trigger 'regex:get'
+	beforeRender: ->
+		# list = @$('ul')
+		@testList.each (item) =>
+			@insertView '#test-list', new TestView(model: item)
 
-		performTests: (regex) ->
-			console.log "running #{@testList.size()} tests..."
-			# compare each test string to the regex and record the result
-			@testList.each (item) ->
-				if result = regex.exec item.get('string')
-					item.set('status', 'success')
-				else
-					item.set('status', 'error')
-				item.set('match', result)
-				console.log regex, item.get('string'), result
-			# re-render this view to update the statuses
-			@render()
+	addTest: (e) ->
+		e.preventDefault()
+		# add a new test to the collection
+		if testString = @$('#test-string').val()
+			@testList.add
+				string: testString
+		# instruct editor to send us the regex so we can test
+		Backbone.trigger 'regex:get'
+
+	performTests: (regex) ->
+		console.log "running #{@testList.size()} tests..."
+		# compare each test string to the regex and record the result
+		@testList.each (item) ->
+			if result = regex.exec item.get('string')
+				item.set
+					status: 'success'
+					match: result
+			else
+				item.set
+					status: 'error'
+					match: null
+			# console.log regex, item.get('string'), result
+		# re-render this view to update the statuses
+		# @render()
+
+module.exports = TesterView

@@ -1,9 +1,10 @@
-define ['backbone'], (Backbone) ->
-	class Expression extends Backbone.Model
-		defaults:
-			string: ''
+Backbone = require 'backbone'
 
-	class Expression.List extends Backbone.Collection
-		model: Expression
+class Expression extends Backbone.Model
+	defaults:
+		string: ''
 
-	return Expression
+class Expression.List extends Backbone.Collection
+	model: Expression
+
+module.exports = Expression

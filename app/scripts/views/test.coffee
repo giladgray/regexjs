@@ -1,19 +1,32 @@
-define ['backbone'], (Backbone) ->
-	class TestView extends Backbone.View
-		template: '_test'
+Backbone = require 'backbone'
 
-		events: 
-			'click .text': 'edit'
-			'keypress .edit': 'keypress'
-			'blur .edit': 'edit'
+class TestView extends Backbone.View
+	template: 'test'
+	el: false
 
-		initialize: ->
+	events:
+		'click .text': 'edit'
+		'keypress .edit': 'keypress'
+		'blur .edit': 'edit'
 
-		edit: -> @$el.toggleClass('editing')
+	initialize: ->
+		@model.on 'all', @render, @
 
-		keypress: (e) ->
-			console.log e.keyCode, e
-			if e.keyCode is 13
-				@model.set('string', @$('.edit').val())
+	serialize: ->
+		string: @model.get('string')
+		stringFormat: @model.get('string').replace(s = @model.get('match')[0], "<strong>#{s}</strong>")
+		match: @model.get('match')
 
+	_updateTest: ->
+		@model.set('string', @$('.edit').val())
 
+	edit: ->
+		@$el.toggleClass('editing')
+		@$('.edit').focus()
+		@_updateTest() unless @$el.hasClass 'editing'
+
+	keypress: (e) ->
+		if e.keyCode is 13
+			@_updateTest()
+
+module.exports = TestView

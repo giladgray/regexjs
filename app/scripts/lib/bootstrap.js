@@ -16,8 +16,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * ========================================================== */
+jQuery = require('jquery');
 
-define(['jquery'], function(jQuery) {
 !function ($) {
 
   "use strict"; // jshint ;_;
@@ -2266,4 +2266,3 @@ define(['jquery'], function(jQuery) {
 
 
 }(window.jQuery);
-});
