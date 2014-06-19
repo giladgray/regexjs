@@ -4,6 +4,9 @@
 
 @import "../bower_components/bootstrap-sass/lib/_mixins";
 
+$Fira: 'Fira Sans', sans-serif;
+$Droid: 'Droid Sans Mono', monospace;
+
 $fixedCellWidth: 120px;
 
 $gradientDegree: 57deg;
@@ -23,7 +26,7 @@ $darkestGray: #707a86;
 @import "modal";
 
 body {
-	font-family: 'Fira Sans', sans-serif;
+	font-family: $Fira;
   background: white;
   color: $textGray;
 }
@@ -127,7 +130,7 @@ body {
 .pure-form {
 	textarea, input[type=text], button {
 		font-size: 1em;
-		font-family: 'Droid Sans Mono', monospace;
+		font-family: $Droid;
 		width: 100%;
 	}
 
@@ -225,35 +228,42 @@ ul.inline {
 }
 
 #editor {
-	background: $orange;
-	border: 1px solid $orangeDark;
-	padding: 1em;
-
 	.expression {
-		font-size: 1.5em;
+		font-family: $Droid;
+		font-size: 1.8em;
 		box-sizing: border-box;
 		position: relative;
 
 		#regex {
-			padding: 10px 30px;
+			padding: 0.3em 1.3em;
 			box-sizing: border-box;
+			background: $lightGray;
+			border: 3px solid white;
+			border-radius: 6px;
+			box-shadow: 0 0 0 1px rgba(black, 0.10) inset,
+			            0 1px 2px rgba(black, 0.15) inset;
+
+			@include transition(border 0.1s);
+
+			&:focus {
+				border-color: $orange;
+				box-shadow: 0 1px 2px rgba(black, 0.15) inset;
+			}
 		}
 
-		$slashSize: 40px;
 		&:before, &:after {
 			content: '/';
 			position: absolute;
-			top: 54%;
-			font-size: $slashSize;
-			line-height: $slashSize;
+			top: 50%;
+			font-size: 1em;
 			@include translate(0, -50%);
 		}
 		&:before {
-			left: 10px;
+			left: 0.5em;
 		}
 
 		&:after {
-			right: 15px;
+			right: 0.7em;
 		}
 	}
 	.modifiers {
