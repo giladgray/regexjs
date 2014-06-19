@@ -77,8 +77,9 @@ module.exports = (grunt) ->
     handlebars:
       dist:
         files:
-          'dist/scripts/templates.js': ['app/templates/{,*/}*.hbs']
+          '.tmp/scripts/templates.js': ['app/templates/{,*/}*.hbs']
         options:
+          amd: true
           namespace: 'Templates'
           processName: (filename) ->
             filename.match(/templates\/(.+)\.h[bj]s$/)[1]
@@ -127,11 +128,11 @@ module.exports = (grunt) ->
       livereload:
         options:
           open: true
-          base: ['app', '.tmp']
+          base: ['app', '.tmp', 'dist']
       test:
         options:
           port: 9001
-          base: ['app', '.tmp', 'test']
+          base: ['app', '.tmp', 'dist', 'test']
       dist:
         options:
           open: true
