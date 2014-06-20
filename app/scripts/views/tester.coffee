@@ -11,7 +11,7 @@ define ['backbone', 'models/expression'], (Backbone, Expression) ->
 			# subscribe to regex:test event (triggered by editor)
 			Backbone.on 'regex:test', @performTests, @
 
-		serialize: -> 
+		serialize: ->
 			tests: @tests.models
 			# calculate some stats about the tests
 			stats:
@@ -36,6 +36,6 @@ define ['backbone', 'models/expression'], (Backbone, Expression) ->
 				else
 					item.set('status', 'error')
 				item.set('match', result)
-				console.log regex, item.get('string'), result
+				# console.log regex, item.get('string'), result
 			# re-render this view to update the statuses
 			@render()
