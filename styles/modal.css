@@ -1,0 +1,24 @@
+.modal-backdrop { position: fixed; top: 0; bottom: 0; left: 0; right: 0; z-index: 1000; background-color: black; }
+.modal-backdrop.fade { -webkit-transition: opacity 0.3s linear; -moz-transition: opacity 0.3s linear; -o-transition: opacity 0.3s linear; transition: opacity 0.3s linear; opacity: 0; }
+
+.modal-backdrop, .modal-backdrop.fade.in { opacity: 0.8; filter: alpha(opacity=80); }
+
+.modal { width: 750px; height: 710px; position: absolute; top: 50%; left: 50%; z-index: 1050; margin-top: -355px; margin-left: -375px; background: white; border-radius: 6px; border: 1px solid #f76b1c; box-sizing: border-box; }
+.modal .modal-header { background: #f76b1c; height: 70px; text-align: center; position: absolute; top: 0; left: 0; right: 0; }
+.modal .modal-header h1, .modal .modal-header h2, .modal .modal-header h3 { line-height: 1em; color: white; }
+.modal .modal-body { box-sizing: border-box; padding: 1em; margin-top: 70px; max-height: 600px; overflow-y: auto; }
+.modal .modal-footer { height: 40px; padding: 0.25em 1em; background: #f76b1c; color: white; text-align: center; border-radius: 0 0 6px 6px; }
+.modal.fade { -webkit-transition: opacity 0.3s linear, top 0.3s ease-out; -moz-transition: opacity 0.3s linear, top 0.3s ease-out; -o-transition: opacity 0.3s linear, top 0.3s ease-out; transition: opacity 0.3s linear, top 0.3s ease-out; top: -50%; }
+.modal.fade.in { top: 50%; }
+
+.modal-help label { display: inline-block; font-size: 1.2em; font-weight: 600; line-height: 1.3em; margin: 0.5em 0 0.2em; }
+.modal-help label:first-child { margin-top: 0; }
+.modal-help table { width: 100%; }
+.modal-help table .item, .modal-help table .ex { text-align: right; white-space: nowrap; font-family: "Droid Sans Mono", monospace; }
+.modal-help table .item { color: #f76b1c; font-weight: 600; }
+.modal-help table .item em, .modal-help table .item i { width: 1.4em; height: 1em; background: silver; display: inline-block; vertical-align: bottom; }
+.modal-help table .item em.x2 { width: 2.8em; }
+.modal-help table .item i { width: .6em; }
+.modal-help table .ex { font-size: .8em; }
+.modal-help #captures + table .item { min-width: 90px; }
+.modal-help ul { display: inline-block; }
