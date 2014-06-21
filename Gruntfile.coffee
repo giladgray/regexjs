@@ -27,7 +27,7 @@ module.exports = (grunt) ->
         tasks: ['template']
       browserify:
         files: 'app/scripts/{,*/}*.coffee'
-        tasks: ['browserify']
+        tasks: ['coffee']
       handlebars:
         files: ['app/templates/{,*/}*.hbs']
         tasks: ['handlebars']
