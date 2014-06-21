@@ -1,15 +1,15 @@
 <li class="test {{status}}">
 	{{> actions}}
 	<div class="status"></div>
-	{{string}}
+	{{{stringFormat}}}
 	{{#unless string}}&nbsp;{{/unless}}
 	{{#if match}}
 		<div class="matches">
-			<strong class="pull-left">Matches</strong>
-			<ol>
-			{{#each match}}
+			<strong class="pull-left">Captures</strong>
+			<ol class="inline">
+			{{#rest match}}
 				<li>{{this}}</li>
-			{{/each}}
+			{{/rest}}
 			</ol>
 		</div>
 	{{/if}}

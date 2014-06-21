@@ -306,6 +306,10 @@ $topHeight: 40%;
             border-radius: 6px;
         }
 
+        > strong {
+            color: $orange;
+        }
+
 		.status {
 			width: 1em;
 			height: 1em;
