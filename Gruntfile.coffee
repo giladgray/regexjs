@@ -46,7 +46,7 @@ module.exports = (grunt) ->
       dist:
         files: [
           expand: true
-          cwd: 'add/scripts'
+          cwd: 'app/scripts'
           src: '**/*.coffee'
           dest: '.tmp/scripts'
           ext: '.js'
