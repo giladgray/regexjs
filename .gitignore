@@ -6,3 +6,4 @@ test/temp
 app/bower_components
 .tmp
 test/bower_components/
+npm-debug.log
