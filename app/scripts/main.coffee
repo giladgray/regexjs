@@ -20,9 +20,6 @@ define ["app", "router", 'templates'], (app, Router, Templates) ->
   Handlebars.registerHelper 'first', (context, options) ->
     if context.length then options.fn(context[0])
 
-  Handlebars.registerHelper 'rest', (context, options) ->
-    return _.map(_.rest(context), options.fn).join('\n')
-
   Handlebars.registerHelper 'ifLoggedIn', (context, options) ->
     if Parse.User.current() then options.fn(context) else options.inverse(context)
 

@@ -14,7 +14,7 @@ define ['backbone'], (Backbone) ->
       status: @model.get('status')
       string: @model.get('string')
       stringFormat: @model.get('string').replace(s = @model.get('match')?[0], "<strong>#{s}</strong>")
-      match: @model.get('match')
+      match: @model.get('match')?.slice 1
 
     destroy: ->
       @model.destroy()
