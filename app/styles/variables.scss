@@ -1,0 +1,31 @@
+$darkenPct: 15%;
+
+$green: rgb(28, 184, 65);
+$greenDark: darken($green, $darkenPct);
+
+$ltblue: rgb(66, 184, 221);
+$ltblueDark: darken($ltblue, $darkenPct);
+
+$maroon: rgb(202, 60, 60);
+$maroonDark: darken($maroon, $darkenPct);
+
+$orange: orange; // rgb(223, 117, 20);
+$orangeDark: darken($orange, $darkenPct);
+
+$Fira: 'Fira Sans', sans-serif;
+$Droid: 'Droid Sans Mono', monospace;
+
+$fixedCellWidth: 120px;
+
+$gradientDegree: 57deg;
+
+$yellow: #fad961;
+$orange: #f76b1c;
+
+$blue: #32b5f2;
+$darkBlue: #009fe9;
+
+$lightGray: #f5f7f8;
+$textGray: #545758;
+$darkGray: #909ba7;
+$darkestGray: #707a86;
