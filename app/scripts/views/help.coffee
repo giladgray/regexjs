@@ -5,7 +5,9 @@ define ['backbone', 'text!lib/regex.json'], (Backbone, regexes) ->
     className: 'modal modal-help fade'
 
     defaultOptions:
-      remove: true
+      remove: false
+      keyboard: true
+      backdrop: true
 
     events:
       'click #popout': 'popout'
@@ -30,14 +32,9 @@ define ['backbone', 'text!lib/regex.json'], (Backbone, regexes) ->
     # Returns a promise that resolves when modal is closed.
     # The promise is never rejected but it's safer to use always() instead of done()
     modal: (options) ->
-      options = _.extend @defaultOptions, options
+      options = _.defaults options, @defaultOptions
       # if we don't have a reference to it then the modal hasn't been rendered
       @render() unless @_modal
 
       @_modal = @$el.modal(options)
-      deferred = new $.Deferred()
-      # resolve the promise on modal hide
-      @_modal.on 'hidden', =>
-        deferred.resolve()
-        @remove() if options.remove
-      return deferred
+      $('.modal-backdrop').click => @_modal.modal('hide')
