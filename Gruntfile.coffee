@@ -20,6 +20,8 @@ module.exports = (grunt) ->
 
   ###### PLUGIN CONFIGURATIONS ######
   grunt.initConfig
+    pkg: pkg
+
     # grunt-contrib-watch
     watch:
       template:
@@ -37,7 +39,7 @@ module.exports = (grunt) ->
       livereload:
         options:
           livereload: '<%= connect.options.livereload %>'
-        files: ['dist/**/*.{js,css,html,json,png}']
+        files: ['{dist,.tmp}/**/*.{js,css,html,json,png}']
 
     clean:
       dist: ['dist']
@@ -140,7 +142,7 @@ module.exports = (grunt) ->
           livereload: false
       github:
         options:
-          open: 'https://giladgray.github.io/mmindd-mmvp'
+          open: 'https://giladgray.github.io/<%= pkg.name %>'
 
     # grunt-gh-pages
     'gh-pages':
