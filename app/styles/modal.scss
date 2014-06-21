@@ -1,5 +1,5 @@
 @import "../bower_components/bootstrap-sass/lib/_mixins";
-@import "colors";
+@import "variables";
 
 .modal-backdrop {
 	position: fixed;
@@ -10,9 +10,9 @@
 	z-index: 1000;
 	background-color: black;
 
-	&.fade { 
+	&.fade {
 		@include transition(opacity .3s linear);
-		opacity: 0; 
+		opacity: 0;
 	}
 }
 .modal-backdrop,
@@ -21,10 +21,10 @@
 }
 
 $modalWidth: 750px;
-$modalHeight: 700px;
+$modalHeight: 710px;
 $modalHeaderHeight: 70px;
 $modalFooterHeight: 40px;
-$modalPadding: 1.5em;
+$modalPadding: 1em;
 
 .modal {
 	width: $modalWidth;
@@ -34,7 +34,7 @@ $modalPadding: 1.5em;
 	top: 50%;
 	left: 50%;
 	z-index: 1050;
-	
+
 	margin-top: -$modalHeight / 2;
 	margin-left: -$modalWidth / 2;
 
@@ -63,6 +63,7 @@ $modalPadding: 1.5em;
 		padding: $modalPadding;
 		margin-top: $modalHeaderHeight;
 		max-height: $modalHeight - $modalHeaderHeight - $modalFooterHeight;
+        overflow-y: auto;
 	}
 
 	.modal-footer {
@@ -75,7 +76,7 @@ $modalPadding: 1.5em;
 	}
 
 	// animations
-	
+
 	&.fade {
 		@include transition(opacity .3s linear, top .3s ease-out);
 		top: -50%;
@@ -88,8 +89,9 @@ $modalPadding: 1.5em;
 	label {
 		display: inline-block;
 		font-size: 1.2em;
-		font-weight: 600;
-		margin: .5em 0 .2em;
+        font-weight: 600;
+        line-height: 1.3em;
+        margin: .5em 0 .2em;
 
 		&:first-child {
 			margin-top: 0;
@@ -102,7 +104,7 @@ $modalPadding: 1.5em;
 		.item, .ex {
 			text-align: right;
 			white-space: nowrap;
-		
+            font-family: $Droid;
 		}
 
 		.item {
@@ -117,6 +119,7 @@ $modalPadding: 1.5em;
 				display: inline-block;
 				vertical-align: bottom;
 			}
+            em.x2 { width: 2.8em; }
 			i {
 				width: .6em;
 			}
