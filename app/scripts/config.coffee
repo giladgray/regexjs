@@ -11,7 +11,7 @@ require.config
     jquery: '../bower_components/jquery/jquery'
     layoutmanager: '../bower_components/layoutmanager-amd/backbone.layoutmanager'
     text: '../bower_components/requirejs-text/text'
-    underscore: '../bower_components/underscore-amd/underscore'
+    underscore: '../bower_components/lodash/dist/lodash.underscore'
 
   # fix things that don't support AMD
   shim:
@@ -21,3 +21,7 @@ require.config
         @Handlebars = Handlebars
     parse:
       exports: 'Parse'
+    jquery:
+      exports: 'jQuery'
+    bootstrap:
+      deps: ['jquery']
