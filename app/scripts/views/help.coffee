@@ -1,44 +1,43 @@
 define ['backbone', 'text!lib/regex.json'], (Backbone, regexes) ->
-    regexes = JSON.parse regexes
-    class HelpView extends Backbone.View
-        template: 'help'
+  regexes = JSON.parse regexes
+  class HelpView extends Backbone.View
+    template: 'help'
+    className: 'modal modal-help fade'
 
-        className: 'modal modal-help fade'
+    defaultOptions:
+      remove: true
 
-        defaults:
-            remove: true
+    events:
+      'click #popout': 'popout'
 
-        events:
-            'click #popout': 'popout'
+    initialize: ->
+      @regexes = {}
+      # fancy up the rules with some HTML substitution
+      for type, rules of regexes
+        @regexes[type] = _.map rules, (rule) ->
+          description: rule.description.replace /\n/g, '<br/>'
+          example: rule.example or ''
+          rule: rule.rule.replace(/xxxx/g, '<em class="x2"></em>')
+                    .replace(/xx/g, '<em></em>')
+                    .replace(/nn/g, '<i></i>')
 
-        initialize: ->
-            @regexes = {}
-            # fancy up the rules with some HTML substitution
-            for type, rules of regexes
-                @regexes[type] = _.map rules, (rule) ->
-                    description: rule.description.replace /\n/g, '<br/>'
-                    example: rule.example or ''
-                    rule: rule.rule.replace(/xxxx/g, '<em class="x2"></em>')
-                                   .replace(/xx/g, '<em></em>')
-                                   .replace(/nn/g, '<i></i>')
+    serialize: -> @regexes
 
-        serialize: -> @regexes
+    popout: ->
+      @_modal?.modal('hide')
 
-        popout: ->
-            @_modal?.modal('hide')
+    # Launches this ModalView as a Bootstrap modal dialog using the jQuery plugin.
+    # Returns a promise that resolves when modal is closed.
+    # The promise is never rejected but it's safer to use always() instead of done()
+    modal: (options) ->
+      options = _.extend @defaultOptions, options
+      # if we don't have a reference to it then the modal hasn't been rendered
+      @render() unless @_modal
 
-        # Launches this ModalView as a Bootstrap modal dialog using the jQuery plugin.
-        # Returns a promise that resolves when modal is closed.
-        # The promise is never rejected but it's safer to use always() instead of done()
-        modal: (options) ->
-            options = _.extend @defaults, options
-            # if we don't have a reference to it then the modal hasn't been rendered
-            @render() unless @_modal
-
-            @_modal = @$el.modal(options)
-            deferred = new $.Deferred()
-            # resolve the promise on modal hide
-            @_modal.on 'hidden', =>
-                deferred.resolve()
-                @remove() if options.remove
-            return deferred
+      @_modal = @$el.modal(options)
+      deferred = new $.Deferred()
+      # resolve the promise on modal hide
+      @_modal.on 'hidden', =>
+        deferred.resolve()
+        @remove() if options.remove
+      return deferred
