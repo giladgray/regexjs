@@ -10,9 +10,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css styles/index.css -->
         <link rel="stylesheet" href="styles/main.css">
-        <!-- build:js scripts/vendor/modernizr.js -->
-        <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
     </head>
     <body>
@@ -52,8 +51,17 @@
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
 
-        <!-- build:js scripts/main.js -->
-        <script data-main="scripts/config" src="bower_components/requirejs/require.js"></script>
+        <!-- build:js scripts/vendor.js -->
+        <script src="bower_components/jquery/jquery.js"></script>
+        <script src="bower_components/lodash/dist/lodash.js"></script>
+        <script src="bower_components/backbone/backbone.js"></script>
+        <script src="bower_components/layoutmanager/backbone.layoutmanager.js"></script>
+        <script src="bower_components/handlebars/handlebars.runtime.js"></script>
+        <script src="bower_components/bootstrap-sass/js/transition.js"></script>
+        <script src="bower_components/bootstrap-sass/js/modal.js"></script>
         <!-- endbuild -->
+
+        <script src="scripts/templates.js"></script>
+        <script src="scripts/index.js"></script>
 </body>
 </html>
