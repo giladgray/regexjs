@@ -1,21 +1,33 @@
-define ['app', 'views/navbar', 'views/editor', 'views/tester', 'views/help'], (app, NavbarView, EditorView, TesterView, HelpView) ->
-	"use strict"
+"use strict"
 
-	# Defining the application router, you can attach sub routers here.
-	Router = Backbone.Router.extend
-		routes:
-			'': 'regex'
-			'help': 'cheatSheet'
+NavbarView = require './views/navbar.coffee'
+EditorView = require './views/editor.coffee'
+TesterView = require './views/tester.coffee'
+HelpView   = require './views/help.coffee'
 
-		regex: ->
-			app.useLayout 'layout'
-			app.layout.setView('#navbar', new NavbarView()).render()
-			app.layout.setView('#editor', new EditorView()).render()
-			app.layout.setView('#tests',  new TesterView()).render()
+# Defining the application router, you can attach sub routers here.
+class Router extends Backbone.Router
 
-		# full-screen cheat sheet!
-		cheatSheet: ->
-			app.useLayout 'cheat'
-			app.layout.setView('#sheet', @help = new HelpView()).render()
-			@help.$el.addClass('in')
+  routes:
+    '': 'regex'
+    'help': 'cheatSheet'
 
+  initialize: ({@app}) ->
+    unless @app?
+      throw new Error('must provide app to Router')
+
+  regex: ->
+    @app.useLayout 'layout'
+    @app.layout.setViews
+      '#navbar' : new NavbarView()
+      '#editor' : new EditorView()
+      '#tests'  : new TesterView()
+    @app.layout.render()
+
+  # full-screen cheat sheet!
+  cheatSheet: ->
+    @app.useLayout 'cheat'
+    @app.layout.setView('#sheet', @help = new HelpView()).render()
+    @help.$el.addClass('in')
+
+module.exports = Router

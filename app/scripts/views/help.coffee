@@ -1,40 +1,41 @@
-define ['backbone', 'text!lib/regex.json'], (Backbone, regexes) ->
-  regexes = JSON.parse regexes
-  class HelpView extends Backbone.View
-    template: 'help'
-    className: 'modal modal-help fade'
+regexes = require '../lib/regex.json'
 
-    defaultOptions:
-      remove: false
-      keyboard: true
-      backdrop: true
+class HelpView extends Backbone.Layout
+  template: 'help'
 
-    events:
-      'click #popout': 'popout'
+  className: 'modal modal-help fade'
 
-    initialize: ->
-      @regexes = {}
-      # fancy up the rules with some HTML substitution
-      for type, rules of regexes
-        @regexes[type] = _.map rules, (rule) ->
-          description: rule.description.replace /\n/g, '<br/>'
-          example: rule.example or ''
-          rule: rule.rule.replace(/xxxx/g, '<em class="x2"></em>')
-                    .replace(/xx/g, '<em></em>')
-                    .replace(/nn/g, '<i></i>')
+  defaultOptions:
+    remove: false
+    keyboard: true
+    backdrop: true
 
-    serialize: -> @regexes
+  events:
+    'click #popout': 'popout'
 
-    popout: ->
-      @_modal?.modal('hide')
+  initialize: ->
+    @regexes = {}
+    # fancy up the rules with some HTML substitution
+    for type, rules of regexes
+      @regexes[type] = _.map rules, (rule) ->
+        description: rule.description.replace /\n/g, '<br/>'
+        example: rule.example or ''
+        rule: rule.rule.replace(/xxxx/g, '<em class="x2"></em>')
+                  .replace(/xx/g, '<em></em>')
+                  .replace(/nn/g, '<i></i>')
 
-    # Launches this ModalView as a Bootstrap modal dialog using the jQuery plugin.
-    # Returns a promise that resolves when modal is closed.
-    # The promise is never rejected but it's safer to use always() instead of done()
-    modal: (options) ->
-      options = _.defaults options, @defaultOptions
-      # if we don't have a reference to it then the modal hasn't been rendered
-      @render() unless @_modal
+  serialize: -> @regexes
 
-      @_modal = @$el.modal(options)
-      $('.modal-backdrop').click => @_modal.modal('hide')
+  popout: ->
+    @_modal?.modal('hide')
+
+  # Launches this ModalView as a Bootstrap modal dialog using the jQuery plugin.
+  modal: (options={}) ->
+    _.defaults options, @defaults
+    # if we don't have a reference to it then the modal hasn't been rendered
+    @render() unless @_modal
+
+    @_modal = @$el.modal(options)
+    $('.modal-backdrop').click => @_modal.modal('hide')
+
+module.exports = HelpView
