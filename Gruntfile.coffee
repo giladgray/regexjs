@@ -10,7 +10,6 @@ module.exports = (grunt) ->
   options = {}
 
   Gruntfile grunt,
-    sass:
-      dist:
-        files:
-          'dist/styles/index.css': 'app/styles/main.scss'
+    styles : ['styles/main.scss']
+
+
