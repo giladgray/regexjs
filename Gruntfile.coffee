@@ -9,4 +9,8 @@ npm install --save-dev grunt-browserify grunt-contrib-clean grunt-contrib-concat
 module.exports = (grunt) ->
   options = {}
 
-  Gruntfile grunt, options
+  Gruntfile grunt,
+    sass:
+      dist:
+        files:
+          'dist/styles/index.css': 'app/styles/main.scss'
