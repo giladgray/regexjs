@@ -2,32 +2,25 @@
 	<div class="expression pure-row">
 		<input type="text" name="regex" id="regex" rows="3" autofocus placeholder="r[aeiou]g[aeiou]x{3}"></textarea>
 	</div>
-	<div class="modifiers pure-row">
-		<div class="pure-u-1-8">
+	<ul class="modifiers pure-row inline">
+		<li>
+			<input type="checkbox" name="global" id="g">
 			<label for="g" class="pure-checkbox">
-				<input type="checkbox" name="global" id="g">
 				<strong>G</strong>lobal
 			</label>
-		</div>
-		<div class="pure-u-1-8">
+		</li>
+		<li>
+			<input type="checkbox" name="multiline" id="m">
 			<label for="m" class="pure-checkbox">
-				<input type="checkbox" name="multiline" id="m">
 				<strong>M</strong>ultiline
 			</label>
-		</div>
-		<div class="pure-u-1-8">
+		</li>
+		<li>
+			<input type="checkbox" name="ignore" id="i">
 			<label for="i" class="pure-checkbox">
-				<input type="checkbox" name="ignore" id="i">
 				<strong>I</strong>gnore case
 			</label>
-		</div>
-	</div>
-</div>
-<div class="alert alert-error hide" id="error"></div>
-<div class="info">
-	<ul class="inline">
-		<li><a href="#/help" target="_blank" data-bypass>Learn More</a></li>
-		<li>Something</li>
-		<li>More Stuff</li>
+		</li>
 	</ul>
 </div>
+<div class="alert alert-error hide" id="error"></div>
