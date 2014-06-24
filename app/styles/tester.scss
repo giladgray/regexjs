@@ -2,19 +2,29 @@
 
 #tests {
   header {
-    padding: 1em;
+    padding: 1em 0;
 
     form {
       overflow: hidden;
-      > * {
-        float: left;
-        &:last-child {
-          padding-left: 1em;
-        }
-      }
+
+      .variable, .fixed { padding: 0 }
 
       input {
+        font-family: $Fira;
+        font-size: 24px;
         @include smooth-input(white, $lightGray);
+        height: 56px;
+        border-radius: 6px 0 0 6px;
+        width: 100%;
+      }
+
+      .btn {
+        width: 150px;
+        color: white;
+        font-family: $Fira;
+        font-size: 20px;
+        text-shadow: 0 1px 2px rgba(#00264D, 0.3);
+        @include gradient-vertical($blue, $darkBlue);
       }
     }
   }
@@ -22,6 +32,7 @@
   .tests {
     border: 1px solid $darkGray;
     border-radius: 6px;
+    margin-bottom: $bigMargin;
   }
 
   .test {

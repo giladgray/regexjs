@@ -1,15 +1,14 @@
-<header class="table-row">
-	<form id="new-test" class="pure-form pure-form-inline variable">
-		<div class="pure-u-3-4">
-			<input type="text" id="test-string" placeholder="new test string">
+<header>
+	<form id="new-test" class="pure-form pure-form-inline table-row">
+		<div class="variable">
+			<input type="text" id="test-string" placeholder="Enter a test string...">
 		</div>
-		<div class="pure-u-1-4">
-			<button class="pure-button">Test</button>
+		<div class="fixed">
+			<button class="btn">Add Test</button>
 		</div>
 	</form>
-	<div class="fixed">
 	{{#with stats}}
-		<ul class="stats unstyled">
+		<ul class="stats unstyled inline">
 			<li><strong>{{total}} tests</strong></li>
 			{{#with status}}
 			<li>{{#if success}}{{success}}{{else}}0{{/if}} positive</li>
@@ -17,7 +16,6 @@
 			{{/with}}
 		</ul>
 	{{/with}}
-	</div>
 </header>
 
 <ul id="test-list" class="tests unstyled"></ul>
