@@ -1,0 +1,99 @@
+@import "variables";
+
+#tests {
+  header {
+    padding: 1em;
+
+    form {
+      overflow: hidden;
+      > * {
+        float: left;
+        &:last-child {
+          padding-left: 1em;
+        }
+      }
+    }
+  }
+
+    .tests {
+        border: 1px solid $darkGray;
+        border-radius: 6px;
+    }
+
+  .test {
+    position: relative;
+    padding: 1em;
+        padding-left: 2em;
+    border-bottom: 1px solid gray;
+        background: white;
+        line-height: 1em;
+
+        &:first-child {
+            border-radius: 6px 6px 0 0;
+            .status { border-radius: 6px 0 0 0; }
+        }
+
+        &:last-child {
+            border-radius: 0 0 6px 6px;
+            border-bottom: none;
+            .status { border-radius: 0 0 0 6px; }
+        }
+
+        &:first-child:last-child {
+            border-radius: 6px;
+            .status { border-radius: 6px 0 0 6px; }
+        }
+
+        > strong {
+            color: $orange;
+        }
+
+    .status {
+            // left sidebar
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 1em;
+        }
+
+    .matches {
+      ol {
+        margin-left: 5em;
+        margin-bottom: 0;
+        padding-left: 3em;
+        border-left: 1px solid rgba(0,0,0,0.5);
+      }
+    }
+
+    .actions {
+      position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+
+            display: none;
+
+            li {
+                height: 50%;
+                border-left: 1px solid $darkGray;
+
+                button {
+                    width: 100%;
+                    height: 100%;
+                    color: $textGray;
+                    background: none;
+                    border-radius: 0;
+                }
+
+                & + li {
+                    border-top: 1px solid $darkGray;
+                }
+            }
+    }
+
+        &:hover .actions {
+            display: block;
+        }
+  }
+}
