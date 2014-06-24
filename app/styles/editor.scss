@@ -70,10 +70,8 @@
           text-align: center;
 
           background: $lightGray;
-          box-shadow: 0 0 0 1px rgba(black, 0.1) inset,
-                      0 1px 2px rgba(black, 0.15) inset;
           border-radius: 3px;
-
+          @include black-shadow(0.1, 0.15);
         }
         &:active:before { background: darken($lightGray, 5%); }
       }
@@ -81,8 +79,7 @@
       &:checked + label {
         &:before {
           background: $darkestGray;
-          box-shadow: 0 0 0 1px rgba(black, 0.2) inset,
-                      0 1px 2px rgba(black, 0.25) inset;
+          @include black-shadow(0.2, 0.25);
         }
         &:active:before { background: darken($darkestGray, 10%); }
 
