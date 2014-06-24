@@ -84,7 +84,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"regex pure-form\">\n	<div class=\"expression pure-row\">\n		<input type=\"text\" name=\"regex\" id=\"regex\" rows=\"3\" autofocus placeholder=\"r[aeiou]g[aeiou]x{3}\"></textarea>\n	</div>\n	<div class=\"modifiers pure-row\">\n		<div class=\"pure-u-1-8\">\n			<label for=\"g\" class=\"pure-checkbox\">\n				<input type=\"checkbox\" name=\"global\" id=\"g\">\n				<strong>G</strong>lobal\n			</label>\n		</div>\n		<div class=\"pure-u-1-8\">\n			<label for=\"m\" class=\"pure-checkbox\">\n				<input type=\"checkbox\" name=\"multiline\" id=\"m\">\n				<strong>M</strong>ultiline\n			</label>\n		</div>\n		<div class=\"pure-u-1-8\">\n			<label for=\"i\" class=\"pure-checkbox\">\n				<input type=\"checkbox\" name=\"ignore\" id=\"i\">\n				<strong>I</strong>gnore case\n			</label>\n		</div>\n	</div>\n</div>\n<div class=\"alert alert-error hide\" id=\"error\"></div>\n<div class=\"info\">\n	<ul class=\"inline\">\n		<li><a href=\"#/help\" target=\"_blank\" data-bypass>Learn More</a></li>\n		<li>Something</li>\n		<li>More Stuff</li>\n	</ul>\n</div>\n";
+  return "<div class=\"regex pure-form\">\n	<div class=\"expression pure-row\">\n		<input type=\"text\" name=\"regex\" id=\"regex\" rows=\"3\" autofocus placeholder=\"r[aeiou]g[aeiou]x{3}\"></textarea>\n	</div>\n	<ul class=\"modifiers pure-row inline\">\n		<li>\n			<input type=\"checkbox\" name=\"global\" id=\"g\">\n			<label for=\"g\" class=\"pure-checkbox\">\n				<strong>G</strong>lobal\n			</label>\n		</li>\n		<li>\n			<input type=\"checkbox\" name=\"multiline\" id=\"m\">\n			<label for=\"m\" class=\"pure-checkbox\">\n				<strong>M</strong>ultiline\n			</label>\n		</li>\n		<li>\n			<input type=\"checkbox\" name=\"ignore\" id=\"i\">\n			<label for=\"i\" class=\"pure-checkbox\">\n				<strong>I</strong>gnore case\n			</label>\n		</li>\n	</ul>\n</div>\n<div class=\"alert alert-error hide\" id=\"error\"></div>\n";
   });
 
 this["Templates"]["help"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -118,7 +118,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"section-top\">\n  <div id=\"navbar\" class=\"pure-u-1 container\"></div>\n  <div id=\"editor\" class=\"pure-u-1 container\"></div>\n</div>\n<div class=\"section-bottom\">\n  <div id=\"switch\" class=\"pure-u-1 container\"></div>\n  <div id=\"tests\" class=\"pure-u-1 container\"></div>\n  <div id=\"build\" class=\"pure-u-1 container\"></div>\n</div>\n";
+  return "<div class=\"section-top\">\n  <div id=\"navbar\" class=\"pure-u-1 container\"></div>\n  <div id=\"editor\" class=\"pure-u-1 container\"></div>\n</div>\n<div class=\"section-bottom\">\n  <div id=\"switch\" class=\"pure-u-1 container\">\n    <button class=\"btn\">Build</button><button class=\"btn\">Test</button>\n  </div>\n  <div id=\"tests\" class=\"pure-u-1 container\"></div>\n  <div id=\"build\" class=\"pure-u-1 container\"></div>\n</div>\n";
   });
 
 this["Templates"]["navbar"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -147,7 +147,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1, helper;
-  buffer += "\n		<ul class=\"stats unstyled\">\n			<li><strong>";
+  buffer += "\n		<ul class=\"stats unstyled inline\">\n			<li><strong>";
   if (helper = helpers.total) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.total); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -191,10 +191,10 @@ function program7(depth0,data) {
   return escapeExpression(stack1);
   }
 
-  buffer += "<header class=\"table-row\">\n	<form id=\"new-test\" class=\"pure-form pure-form-inline variable\">\n		<div class=\"pure-u-3-4\">\n			<input type=\"text\" id=\"test-string\" placeholder=\"new test string\">\n		</div>\n		<div class=\"pure-u-1-4\">\n			<button class=\"pure-button\">Test</button>\n		</div>\n	</form>\n	<div class=\"fixed\">\n	";
+  buffer += "<header>\n	<form id=\"new-test\" class=\"pure-form pure-form-inline table-row\">\n		<div class=\"variable\">\n			<input type=\"text\" id=\"test-string\" placeholder=\"Enter a test string...\">\n		</div>\n		<div class=\"fixed\">\n			<button class=\"btn\">Add Test</button>\n		</div>\n	</form>\n	";
   stack1 = helpers['with'].call(depth0, (depth0 && depth0.stats), {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n	</div>\n</header>\n\n<ul id=\"test-list\" class=\"tests unstyled\"></ul>\n";
+  buffer += "\n</header>\n\n<ul id=\"test-list\" class=\"tests unstyled\"></ul>\n";
   return buffer;
   });
 
