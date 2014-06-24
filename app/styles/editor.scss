@@ -13,19 +13,7 @@
 
     #regex {
       padding: 0.3em 1.3em;
-      box-sizing: border-box;
-      background: $lightGray;
-      border: 3px solid white;
-      border-radius: 6px;
-      box-shadow: 0 0 0 1px rgba(black, 0.10) inset,
-                  0 1px 2px rgba(black, 0.15) inset;
-
-      @include transition(border 0.1s);
-
-      &:focus {
-        border-color: $orange;
-        box-shadow: 0 1px 2px rgba(black, 0.15) inset;
-      }
+      @include smooth-input($lightGray, white);
     }
 
     &:before, &:after {

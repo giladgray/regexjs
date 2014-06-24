@@ -38,3 +38,17 @@ $bigMargin: 3em;
   box-shadow: 0 0 0 1px rgba(black, $opacity1) inset,
               0 1px 2px rgba(black, $opacity2) inset;
 }
+
+@mixin smooth-input($bgColor, $borderColor) {
+  background: $bgColor;
+  box-sizing: border-box;
+  border: 3px solid $borderColor;
+  border-radius: 6px;
+  @include black-shadow(0.1, 0.15);
+  @include transition(border 0.1s);
+
+  &:focus {
+    border-color: $orange;
+    box-shadow: 0 1px 2px rgba(black, 0.15) inset;
+  }
+}

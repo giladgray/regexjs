@@ -2,17 +2,21 @@
 
 #tests {
   header {
-  padding: 1em;
+    padding: 1em;
 
-  form {
-    overflow: hidden;
-    > * {
-      float: left;
-      &:last-child {
-        padding-left: 1em;
+    form {
+      overflow: hidden;
+      > * {
+        float: left;
+        &:last-child {
+          padding-left: 1em;
+        }
+      }
+
+      input {
+        @include smooth-input(white, $lightGray);
       }
     }
-  }
   }
 
   .tests {
