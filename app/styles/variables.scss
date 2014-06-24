@@ -1,3 +1,5 @@
+@import "../bower_components/bootstrap-sass/lib/_mixins";
+
 $darkenPct: 15%;
 
 $green: rgb(28, 184, 65);
@@ -29,3 +31,5 @@ $lightGray: #f5f7f8;
 $textGray: #545758;
 $darkGray: #909ba7;
 $darkestGray: #707a86;
+
+$bigMargin: 3em;
