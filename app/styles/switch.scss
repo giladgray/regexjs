@@ -5,35 +5,36 @@
   overflow: visible; // for the box-shadow
   @include translate(0, -50%);
 
-  .btn {
-    position: relative;
-    border: none;
-    outline: none;
-    padding: 0;
+}
 
-    color: $textGray;
-    font-family: $Fira;
-    font-size: 20px;
+.btn {
+  position: relative;
+  border: none;
+  outline: none;
+  padding: 0;
 
-    @include size(150px, 50px);
+  color: $textGray;
+  font-family: $Fira;
+  font-size: 20px;
 
-    text-shadow: 0 1px 0 white;
-    @include gradient-vertical(white, $lightGray);
-    box-shadow: 0 0 0 1px rgba(black, 0.2) inset,
-                0 1px 2px rgba(black, 0.1); // TODO : make black-shadow mixin support this
+  @include size(150px, 50px);
 
-    &:first-child { border-radius: 4px 0 0 4px; }
-    &:last-child  {
-      border-radius: 0 4px 4px 0;
-      margin-left: -1px; //collapse border between them
-    }
+  text-shadow: 0 1px 0 white;
+  @include gradient-vertical(white, $lightGray);
+  box-shadow: 0 0 0 1px rgba(black, 0.2) inset,
+              0 1px 2px rgba(black, 0.1); // TODO : make black-shadow mixin support this
 
-    &:active, &.active {
-      color: white;
-      text-shadow: 0 1px 2px rgba(black, 0.5);
-      @include black-shadow(0.2, 0.2);
-      @include gradient-vertical($darkestGray, $darkGray);
-      z-index: 1; // on top of the other one, cover the border
-    }
+  &:first-child { border-radius: 4px 0 0 4px; }
+  &:last-child  {
+    border-radius: 0 4px 4px 0;
+    margin-left: -1px; //collapse border between them
+  }
+
+  &:active, &.active {
+    color: white;
+    text-shadow: 0 1px 2px rgba(black, 0.5);
+    @include black-shadow(0.2, 0.2);
+    @include gradient-vertical($darkestGray, $darkGray);
+    z-index: 1; // on top of the other one, cover the border
   }
 }
