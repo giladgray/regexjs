@@ -11,4 +11,6 @@ npm install --save-dev grunt-browserify grunt-contrib-clean grunt-contrib-concat
 module.exports = (grunt) ->
   options = {}
 
-  Gruntfile grunt, {}
+  Gruntfile grunt,
+    assets : ['index.html', 'scripts/styles/fonts/**', 'images/*.svg']
+
