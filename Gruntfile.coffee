@@ -12,5 +12,6 @@ module.exports = (grunt) ->
   options = {}
 
   Gruntfile grunt,
-    assets : ['index.html', 'scripts/styles/fonts/**', 'images/*.svg']
-
+    assets : ['{,templates/}*.html', 'scripts/styles/fonts/**', 'images/*.svg']
+    bundles:
+      app: 'app/scripts/app.coffee'

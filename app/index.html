@@ -43,25 +43,14 @@
         <!-- UserVoice JavaScript SDK (only needed once on a page) -->
         <script>(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/lCjOZtRlIee2NAJ5SBWKg.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()</script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
-
         <!-- build:js scripts/vendor.js -->
         <script src="bower_components/jquery/jquery.js"></script>
         <script src="bower_components/lodash/dist/lodash.js"></script>
-        <script src="bower_components/backbone/backbone.js"></script>
-        <script src="bower_components/layoutmanager/backbone.layoutmanager.js"></script>
-        <script src="bower_components/handlebars/handlebars.runtime.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/bootstrap-sass/js/transition.js"></script>
         <script src="bower_components/bootstrap-sass/js/modal.js"></script>
         <!-- endbuild -->
 
-        <script src="scripts/templates.js"></script>
-        <script src="scripts/index.js"></script>
+        <script src="scripts/app.js"></script>
 </body>
 </html>
