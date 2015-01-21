@@ -1,0 +1,28 @@
+<div class="pure-u-1 container test-header">
+    <form id="new-test" class="pure-form pure-form-inline table-row" ng-submit="addTest(newTest)">
+        <div class="variable">
+            <input type="text" id="test-string" placeholder="Enter a test string..." ng-model="newTest">
+        </div>
+        <div class="fixed">
+            <button class="btn">Add Test</button>
+        </div>
+    </form>
+</div>
+
+<ul id="test-list" class="tests container">
+    <li class="test" ng-repeat="test in tests" ng-class="{success: test.match, error: !test.match}">
+        <ul class="actions unstyled">
+            <li><button class="pure-button edit">Edit</button></li>
+            <li><button class="pure-button delete">Delete</button></li>
+        </ul>
+
+        <div class="status"></div>
+        <div class="match" ng-bind-html="formatTest(test) | raw"></div>
+        <div class="matches" ng-show="test.captures">
+            <strong class="pull-left">Captures</strong>
+            <ol class="inline">
+                <li ng-repeat="match in test.captures">{{match}}</li>
+            </ol>
+        </div>
+    </li>
+</ul>

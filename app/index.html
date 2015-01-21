@@ -14,23 +14,13 @@
         <link rel="stylesheet" href="styles/index.css">
         <!-- endbuild -->
     </head>
-    <body>
-        <div id="main">
-            <div class="pure-menu pure-menu-open pure-menu-horizontal">
-                <header class="container">
-                    <a href="#" class="pure-menu-heading">
-                        regex.js
-                    </a>
-                    <div class="pure-menu-subheading">
-                        Build and test regular expressions from the comfort of your browser!
-                    </div>
-                </header>
-            </div>
-            <div class="hero-unit center">
-                <div class="container">
-                    <h3>Loading...</h3>
-                </div>
-            </div>
+    <body ng-app="regexjs">
+        <div class="section-top">
+            <header></header>
+            <regexp></regexp>
+        </div>
+        <div class="section-bottom">
+            <tester></tester>
         </div>
         <div id="copyright">
             <em>&copy;</em>2013 Gilad Gray
